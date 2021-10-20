@@ -1,6 +1,7 @@
 import { ApolloServer, gql } from 'apollo-server';
+import { User } from '@test-monorepo/utils';
 
-const USERS = [
+const USERS: User[] = [
   {
     id: '1',
     name: 'Luca',
@@ -25,8 +26,10 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    user: (_: unknown, args: { id: string }) =>
-      USERS.find((u) => u.id === args.id),
+    user: (_: unknown, args: { id: string }) => {
+      console.log('received ID: ' + args.id);
+      return USERS.find((u) => u.id === args.id);
+    },
     users: () => USERS,
   },
 };

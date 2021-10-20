@@ -1,9 +1,11 @@
-import React from 'react';
+import { useState } from 'react';
 import { gql, useQuery } from '@apollo/client';
 
+import { isLuca } from '@test-monorepo/utils';
+
 const USERS_QUERY = gql`
-  query GetUsers {
-    users {
+  query GetUser($id: ID!) {
+    user(id: $id) {
       id
       name
     }
@@ -11,15 +13,18 @@ const USERS_QUERY = gql`
 `;
 
 export function App() {
-  const { loading, data } = useQuery(USERS_QUERY);
+  const [id, setId] = useState('');
 
-  if (loading || !data) {
-    return <h1>Loading...</h1>;
-  }
+  const { data } = useQuery(USERS_QUERY, {
+    variables: { id },
+  });
 
   return (
-    <h1>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-    </h1>
+    <div>
+      <input value={id} onChange={(e) => setId(e.target.value)} />
+
+      <h4>Is Luca: {isLuca(data?.user ?? null) ? 'Yes' : 'No'}</h4>
+      <pre>User: {JSON.stringify(data?.user)}</pre>
+    </div>
   );
 }
