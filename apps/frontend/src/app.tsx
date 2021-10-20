@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { gql, useQuery } from '@apollo/client';
 
-import { isLuca } from '@test-monorepo/utils';
+import { isLuca } from '@test-monorepo/users';
 
 const USERS_QUERY = gql`
   query GetUser($id: ID!) {

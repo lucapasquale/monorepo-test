@@ -1,5 +1,5 @@
 import { ApolloServer, gql } from 'apollo-server';
-import { User } from '@test-monorepo/utils';
+import { User } from '@test-monorepo/users';
 
 const USERS: User[] = [
   {
