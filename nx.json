@@ -38,6 +38,9 @@
       "tags": [],
       "implicitDependencies": ["frontend"]
     },
+    "ui-components": {
+      "tags": []
+    },
     "users": {
       "tags": []
     }

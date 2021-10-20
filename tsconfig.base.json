@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@test-monorepo/ui-components": ["libs/ui-components/src/index.ts"],
       "@test-monorepo/users": ["libs/users/src/index.ts"]
     }
   },
